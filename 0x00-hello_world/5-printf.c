@@ -1,6 +1,7 @@
 #include <stdio.h>
 /**
- * This is a code to display a text using printf
+ * main - This is a code to display a text using printf
+ * Return: Always
  */
 int main(void)
 {
