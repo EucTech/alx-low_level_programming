@@ -5,10 +5,9 @@
  */
 int main(void)
 {
-	printf("Size of variable a : %d", sizeof(a));
-	printf("Size of int data type : %d", sizeof(int));
-	printf("Size of char data type : %d", sizeof(char));
-	printf("Size of float data type : %d", sizeof(float));
-	printf("Size of double data type : %d", sizeof(double));
+	printf("Size of int : %lu\n", sizeof(int));
+	printf("Size of char : %lu\n", sizeof(char));
+	printf("Size of float : %lu\n", sizeof(float));
+	printf("Size of double : %lu\n", sizeof(double));
 	return (0);
 }
