@@ -8,10 +8,12 @@ int main(void)
 {
 	int s_num;
 
-	for (s_num = 0; s_num >= 10; s_num++)
+	for (s_num = 0; s_num <= 10; s_num++)
 	{
-		printf("%d\n", s_num);
+		printf("%d", s_num);
 	}
+
+	printf("\n");
 
 	return (0);
 }
