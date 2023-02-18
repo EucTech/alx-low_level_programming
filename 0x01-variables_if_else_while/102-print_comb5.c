@@ -12,8 +12,6 @@ int main(void)
 	{
 	for (b = a + 1; b < 100; b++)
 	{
-		if (a == 98 && b == 99)
-		continue;
 
 		putchar((a / 10) + '0');
 		putchar((b % 10) + '0');
@@ -22,6 +20,8 @@ int main(void)
 
 		putchar((a / 10) + '0');
 		putchar((b % 10) + '0');
+
+		if (a == 98 && b == 99)
 
 		putchar(',');
 		putchar(' ');
