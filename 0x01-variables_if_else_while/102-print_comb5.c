@@ -13,6 +13,8 @@ int main(void)
 	for (b = a + 1; b < 99; b++)
 	{
 		if (a == 99 && b == 98)
+		continue;
+
 		putchar((a % 10) + '0');
 		putchar((b % 10) + '0');
 
@@ -23,6 +25,8 @@ int main(void)
 	for (b = 0; b < 99; b++)
 	{
 		if (a == 99 && a == 98)
+		continue;
+
 		putchar((a % 10) + '0');
 		putchar((b % 10) + '0');
 
