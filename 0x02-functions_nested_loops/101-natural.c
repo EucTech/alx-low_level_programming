@@ -1,6 +1,6 @@
 #include <stdio.h>
 /**
- * main - prints natural numbers below 
+ * main - prints natural numbers below
  * Return: Always
  */
 
