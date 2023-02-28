@@ -1,6 +1,6 @@
 #include "main.h"
 /**
- * *_strcpy - to write a function that copies the string
+ * char *_strcpy - to write a function that copies the string
  * @dest: first
  * @src: second
  * Return: Always
@@ -10,7 +10,7 @@ char *_strcpy(char *dest, char *src)
 {
 	char *guard = dest;
 
-	while (*src++)
+	while (*src)
 	{
 		*dest++ = *src++;
 		*dest = 0;
