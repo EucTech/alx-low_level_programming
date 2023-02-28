@@ -1,0 +1,24 @@
+#include "main.h"
+#include <stdio.h>
+/**
+ * print_array - to write a function that prints n element of an array
+ * @n: first
+ * @a: secong
+ * Return: Always
+ */
+
+void print_array(int *a, int n)
+{
+	int i;
+
+	for (i = 0; i < (n - 1); i++)
+	{
+		printf("%d, ", a[i]);
+	}
+
+	if (i == (n - 1))
+	{
+		printf("%d", a[n - 1]);
+	}
+	printf("\n");
+}
