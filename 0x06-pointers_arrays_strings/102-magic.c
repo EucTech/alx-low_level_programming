@@ -1,5 +1,8 @@
 #include <stdio.h>
-
+/**
+ * main - A line of code that prints 98
+ * Return: Always
+ */
 int main(void)
 {
 	int n;
