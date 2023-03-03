@@ -1,6 +1,6 @@
 #include "main.h"
 #include <stdio.h>
-#include <string.h>
+
 /**
  * rot13 - a function that encodes a string using rot13
  * @s: variable
@@ -9,23 +9,21 @@
 
 char *rot13(char *s)
 {
-	int i, j, len;
+	int i = 0, i2 = 0;
+	char alpha[] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+	char alpha2[] = "nopqrstuvwxyzabcdefghijklmNOPQRSTUVWXYZABCDEFGHIJKLM";
 
-	len = strlen(s);
-
-	for (i = 0; i < len; i++)
+	while (*(s + i) != 0)
 	{
-		for (j = 0; j < 13; j++)
+		for (i2 = 0; i2 <= 52; i2++)
 		{
-		if ((s[i] >= 'a' && s[i] < 'n') || (s[i] >= 'N' && s[i] <= 'Z'))
-		{
-			s[i] += 13;
+			if (*(s + i) == alpha[i2])
+			{
+				*(s + i) = alpha2[i2];
+				break;
+			}
 		}
-		else if ((s[i] >= 'n' && s[i] <= 'z') || (s[i] >= 'N' && s[i] <= 'Z'))
-		{
-			s[i] -= 13;
-		}
-		}
+			i++;
 	}
 	return (s);
 }
