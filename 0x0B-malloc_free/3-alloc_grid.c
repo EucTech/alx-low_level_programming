@@ -20,7 +20,7 @@ int **alloc_grid(int width, int height)
 		return (NULL);
 	}
 
-	dim = malloc(sizeof(int) * height);
+	dim = malloc(sizeof(int *) * height);
 	if (dim == NULL)
 	{
 		return (NULL);
