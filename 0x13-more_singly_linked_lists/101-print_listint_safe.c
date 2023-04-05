@@ -27,7 +27,7 @@ size_t print_listint_safe(const listint_t *head)
 		if (read >= head)
 		{
 			printf("-> [%p] %d\n", (void *)head->next, head->next->n);
-			exit (98);
+			exit(98);
 		}
 		head = read;
 	}
