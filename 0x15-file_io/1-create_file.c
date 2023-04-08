@@ -4,7 +4,6 @@
 #include <unistd.h>
 #include <stdlib.h>
 #include <fcntl.h>
-#include <sys/stat.h>
 
 /**
  * create_file - A function that creates a text file
