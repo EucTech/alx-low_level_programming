@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include "main.h"
 #include <string.h>
-#include <math.h>
 
 /**
  * binary_to_uint - This is a function that converts
@@ -21,6 +20,8 @@ unsigned int binary_to_uint(const char *b)
 	{
 		if (b[i] == '1')
 			b_num += num2;
+		else if (b[i] != '0')
+			return (0);
 		num2 *= 2;
 	}
 	return (b_num);
