@@ -4,7 +4,7 @@
 #include <math.h>
 
 /**
- * binary_to_unit - This is a function that converts
+ * binary_to_uint - This is a function that converts
  * a binary to an integer
  * @b: This is the a pointer to string of 1 and 0
  * Return: Return convert nuumber
