@@ -10,15 +10,26 @@
 
 void print_binary(unsigned long int n)
 {
-	unsigned long int b = 1UL << (sizeof(unsigned long int) * 8 - 1);
+	int b = sizeof(unsigned long int) * 8;
+	int k;
+	unsigned long int num = 0;
 
-	while (b > 0)
+	for (k = b - 1; k >= 0; k--)
 	{
-		if (n & b)
+		if ((n & (1UL << k)) != 0)
+		{
+			num = 1UL << k;
+			break;
+		}
+	}
+
+	while (num != 0)
+	{
+		if ((n & num) != 0)
 			_putchar('1');
 		else
 			_putchar('0');
 
-		b >>= 1;
+		num >>= 1;
 	}
 }
