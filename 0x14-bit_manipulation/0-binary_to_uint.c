@@ -21,7 +21,7 @@ unsigned int binary_to_uint(const char *b)
 
 	for (i = (s_length - 1); i >= 0; i--)
 	{
-		if (b[i] == '1' || '0')
+		if (b[i] == '1' | '0')
 			b_num += num2;
 		else if (b[i] != '0')
 			return (0);
