@@ -23,7 +23,7 @@ unsigned int binary_to_uint(const char *b)
 	{
 		if (b[i] == '1')
 			b_num += num2;
-		else if (b[i] != '0')
+		else if (b[i] != '0' || '1')
 			return (0);
 		num2 *= 2;
 	}
