@@ -10,10 +10,15 @@
 
 void print_binary(unsigned long int n)
 {
-	/*unsigned long int rep;*/
+	unsigned long int b = 1UL << (sizeof(unsigned long int) * 8 - 1);
 
-	if (n > 1)
-		print_binary(n / 2);
+	while (b > 0)
+	{
+		if (n & b)
+			_putchar('1');
+		else
+			_putchar('0');
 
-	_putchar('0' + n % 2);
+		b >>= 1;
+	}
 }
