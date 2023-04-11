@@ -12,11 +12,10 @@
  */
 void copy_file(char *file_from, char *file_to)
 {
-	ssize_t ff, ft;
-	ssize_t read_f, write_f;
+	ssize_t ff, ft, read_f, write_f;
 	char buff[size];
 
-	ff = open(file_from, O_RDONLY);
+	ff = open(file_ifrom, O_RDONLY);
 	if (ff == -1)
 	{
 		dprintf(2, "Error: Can't read from file %s\n", file_from);
@@ -32,8 +31,7 @@ void copy_file(char *file_from, char *file_to)
 	{
 		write_f = write(ft, buff, read_f);
 		if (write_f != read_f)
-		{
-			dprintf(2, "Error: Can't write to %s\n", file_to);
+		{		
 			exit(99);
 		}
 	}
