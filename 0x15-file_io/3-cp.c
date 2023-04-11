@@ -2,73 +2,75 @@
 #include <stdlib.h>
 #include <fcntl.h>
 #include <unistd.h>
-#include <errno.h>
+#include "main.h"
 #define size 1024
-
 /**
- * main - This is a function that copies a file content form
- * one file to another
- * @argc: number of arguments
- * @argv: array of arguments
+ * copy_file - This is a function that copies a file content form
+ * @file_from: file source
+ * @file_to: file destination
  * Return: 0
  */
-
-int main(int argc, char **argv)
+void copy_file(char *file_from, char *file_to)
 {
-	int file_from;
-	int file_to;
+	ssize_t ff, ft;
 	ssize_t read_f, write_f;
 	char buff[size];
 
-	if (argc != 3)
+	ff = open(file_from, O_RDONLY);
+	if (ff == -1)
 	{
-		dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n");
-		exit(97);
-	}
-
-	/*open the source file with read only*/
-
-	file_from = open(argv[1], O_RDONLY);
-	if (file_from == -1)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't read from file NAME_OF_THE_FILE\n");
+		dprintf(2, "Error: Can't read from file %s\n", file_from);
 		exit(98);
 	}
 
-	/*open the destination file with write only*/
-
-	file_to = open(argv[2], O_WRONLY | O_CREAT | O_TRUNC, 0664);
-	if (file_to == -1)
+	ft = open(file_to, O_WRONLY | O_CREAT | O_TRUNC, 0664);
+	if (ft == -1)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't write to NAME_OF_THE_FILE\n");
+		dprintf(2, "Error: Can't write to %s\n", file_to);
 		exit(99);
 	}
-	
-	while ((read_f = read(file_from, buff, size)) > 0)
+	while ((read_f = read(ff, buff, size)) > 0)
 	{
-		if ((write_f = write(file_to, buff, read_f)) != read_f)
+		write_f = write(ft, buff, read_f);
+		if (write_f != read_f)
 		{
-			dprintf(STDERR_FILENO, "Error: Can't write to NAME_OF_THE_FILE");
+			dprintf(2, "Error: Can't write to %s\n", file_to);
 			exit(99);
 		}
 	}
-
 	if (read_f == -1)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't read to NAME_OF_THE_FILE");
+		dprintf(2, "Error: Can't read to %s\n", file_from);
 		exit(98);
 	}
-
-	if (close(file_from) == -1)
+	if (close(ff) == -1)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't close fd FD_VALUE\n");
+		dprintf(2, "Error: Can't close fd %s\n", file_from);
 		exit(100);
 	}
-
-	if (close(file_to) == -1)
+	if (close(ft) == -1)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't close fd FD_VALUE\n");
+		dprintf(2, "Error: Can't close fd %s\n", file_to);
 		exit(100);
 	}
+}
+
+/**
+ * main - checks code
+ * @argc: the number of arguments
+ * @argv: the array of arguments
+ * Return: 0
+ */
+
+int main(int argc, char *argv[])
+{
+	if (argc != 3)
+	{
+		dprintf(2, "Usage: %s file_from file_to\n", argv[0]);
+		exit(97);
+	}
+
+	copy_file(argv[1], argv[2]);
+
 	return (0);
 }
