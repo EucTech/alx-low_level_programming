@@ -32,7 +32,7 @@ void copy_file(char *file_from, char *file_to)
 		write_f = write(ft, buff, read_f);
 		if (write_f != read_f)
 		{		
-			exit(98);
+			exit(99);
 		}
 	}
 	if (read_f == -1)
@@ -42,12 +42,12 @@ void copy_file(char *file_from, char *file_to)
 	}
 	if (close(ff) == -1)
 	{
-		dprintf(2, "Error: Can't close fd %s\n", ff);
+		dprintf(2, "Error: Can't close fd %ld\n", ff);
 		exit(100);
 	}
 	if (close(ft) == -1)
 	{
-		dprintf(2, "Error: Can't close fd %s\n", ft);
+		dprintf(2, "Error: Can't close fd %ld\n", ft);
 		exit(100);
 	}
 }
