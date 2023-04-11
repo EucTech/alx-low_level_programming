@@ -30,7 +30,7 @@ void copy_file(char *file_from, char *file_to)
 	while ((read_f = read(ff, buff, 1024)) > 0)
 	{
 		write_f = write(ft, buff, read_f);
-		if (write_f <= 0)
+		if (write_f == -1)
 		{
 			dprintf(2, "Error: Can't write to %s\n", file_to);
 			exit(99);
