@@ -12,7 +12,7 @@
  */
 void copy_file(char *file_from, char *file_to)
 {
-	int ff, ft; 
+	int ff, ft;
 	ssize_t read_f, write_f;
 	char buff[size];
 
@@ -32,7 +32,7 @@ void copy_file(char *file_from, char *file_to)
 	{
 		write_f = write(ft, buff, read_f);
 		if (write_f != read_f)
-		{	
+		{
 			dprintf(2, "Error: Can't write to %s\n", file_to);
 			exit(99);
 		}
