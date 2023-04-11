@@ -3,7 +3,6 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include "main.h"
-#define SIZE 1024
 /**
  * copy_file - This is a function that copies a file content form
  * @file_from: file source
@@ -14,7 +13,7 @@ void copy_file(char *file_from, char *file_to)
 {
 	int ff, ft;
 	ssize_t read_f, write_f;
-	char buff[SIZE];
+	char buff[1024];
 
 	ff = open(file_from, O_RDONLY);
 	if (ff == -1)
@@ -28,7 +27,7 @@ void copy_file(char *file_from, char *file_to)
 		dprintf(2, "Error: Can't write to %s\n", file_to);
 		exit(99);
 	}
-	while ((read_f = read(ff, buff, SIZE)) > 0)
+	while ((read_f = read(ff, buff, 1024)) > 0)
 	{
 		write_f = write(ft, buff, read_f);
 		if (write_f != read_f)
