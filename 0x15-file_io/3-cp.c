@@ -43,15 +43,20 @@ int main(int argc, char **argv)
 		dprintf(STDERR_FILENO, "Error: Can't write to NAME_OF_THE_FILE\n");
 		exit(99);
 	}
-
-	while (1)
+	
+	while ((read_f = read(file_from, buff, size)) > 0)
 	{
-		read_f = read(file_from, buff, size);
-		if (read_f <= 0)
-			break;
-		write_f = write(file_to, buff, read_f);
-		if (write_f <= 0)
-			break;
+		if ((write_f = write(file_to, buff, read_f)) != read_f)
+		{
+			dprintf(STDERR_FILENO, "Error: Can't write to NAME_OF_THE_FILE");
+			exit(99);
+		}
+	}
+
+	if (read_f == -1)
+	{
+		dprintf(STDERR_FILENO, "Error: Can't read to NAME_OF_THE_FILE");
+		exit(98);
 	}
 
 	if (close(file_from) == -1)
@@ -66,5 +71,4 @@ int main(int argc, char **argv)
 		exit(100);
 	}
 	return (0);
-
 }
