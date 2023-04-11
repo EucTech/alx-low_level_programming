@@ -15,6 +15,8 @@ void copy_file(char *file_from, char *file_to)
 	ssize_t read_f, write_f;
 	char buff[1024];
 
+	if (file_from == NULL || file_to == NULL)
+		exit(97);
 	ff = open(file_from, O_RDONLY);
 	if (ff == -1)
 	{
