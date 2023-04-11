@@ -8,6 +8,8 @@
 /**
  * main - This is a function that copies a file content form
  * one file to another
+ * @argc: number of arguments
+ * @argv: array of arguments
  * Return: 0
  */
 
@@ -23,7 +25,7 @@ int main(int argc, char **argv)
 		dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n");
 		exit(97);
 	}
-	
+
 	/*open the source file with read only*/
 
 	file_from = open(argv[1], O_RDONLY);
@@ -52,9 +54,6 @@ int main(int argc, char **argv)
 			break;
 	}
 
-	/*close(file_from);
-	close(file_to);*/
-	
 	if (close(file_from) == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't close fd FD_VALUE\n");
@@ -67,7 +66,5 @@ int main(int argc, char **argv)
 		exit(100);
 	}
 	return (0);
-
-
 
 }
