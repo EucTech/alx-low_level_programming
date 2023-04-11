@@ -1,6 +1,6 @@
 #include <stdio.h>
-#include <stdlib.h>
 #include <fcntl.h>
+#include <stdlib.h>
 #include <unistd.h>
 #include "main.h"
 #define size 1024
@@ -22,7 +22,6 @@ void copy_file(char *file_from, char *file_to)
 		dprintf(2, "Error: Can't read from file %s\n", file_from);
 		exit(98);
 	}
-
 	ft = open(file_to, O_WRONLY | O_CREAT | O_TRUNC, 0664);
 	if (ft == -1)
 	{
