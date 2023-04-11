@@ -8,7 +8,7 @@
  * copy_file - This is a function that copies a file content form
  * @file_from: file source
  * @file_to: file destination
- * Return: 0
+ * Return: 0 After
  */
 void copy_file(char *file_from, char *file_to)
 {
