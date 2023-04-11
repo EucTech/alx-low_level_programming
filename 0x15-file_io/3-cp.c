@@ -36,7 +36,7 @@ void copy_file(char *file_from, char *file_to)
 			exit(99);
 		}
 	}
-	if (read_f == 0)
+	if (read_f == -1)
 	{
 		dprintf(2, "Error: Can't read from file %s\n", file_from);
 		exit(98);
