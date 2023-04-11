@@ -12,7 +12,8 @@
  */
 void copy_file(char *file_from, char *file_to)
 {
-	ssize_t ff, ft, read_f, write_f;
+	int ff, ft; 
+	ssize_t read_f, write_f;
 	char buff[size];
 
 	ff = open(file_from, O_RDONLY);
@@ -31,23 +32,24 @@ void copy_file(char *file_from, char *file_to)
 	{
 		write_f = write(ft, buff, read_f);
 		if (write_f != read_f)
-		{		
+		{	
+			dprintf(2, "Error: Can't write to %s\n", file_to);
 			exit(99);
 		}
 	}
 	if (read_f == -1)
 	{
-		dprintf(2, "Error: Can't read from %s\n", file_from);
+		dprintf(2, "Error: Can't read from file %s\n", file_from);
 		exit(98);
 	}
 	if (close(ff) == -1)
 	{
-		dprintf(2, "Error: Can't close fd %ld\n", ff);
+		dprintf(2, "Error: Can't close fd %d\n", ff);
 		exit(100);
 	}
 	if (close(ft) == -1)
 	{
-		dprintf(2, "Error: Can't close fd %ld\n", ft);
+		dprintf(2, "Error: Can't close fd %d\n", ft);
 		exit(100);
 	}
 }
