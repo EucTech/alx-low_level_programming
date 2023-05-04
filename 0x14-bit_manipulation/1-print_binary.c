@@ -12,7 +12,7 @@ void print_binary(unsigned long int n)
 	int u = sizeof(unsigned long int) * 8;
 	unsigned long int p_num = 1;
 
-	for (j = u -1; j >= 0; j--)
+	for (j = u - 1; j >= 0; j--)
 	{
 		if ((n & (1UL << j)) != 0)
 		{
