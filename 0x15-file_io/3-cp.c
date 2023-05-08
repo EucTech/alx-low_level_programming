@@ -8,6 +8,8 @@
  */
 void to_copy_file_from_to(char *file_from, char *file_to)
 {
+	char buffer[1024];
+	ssize_t to_write, to_read;
 	int cf, ct;
 
 	cf = open(file_from, O_RDONLY);
@@ -22,43 +24,25 @@ void to_copy_file_from_to(char *file_from, char *file_to)
 		dprintf(2, "Error: Can't write to %s\n", file_to);
 		exit(99);
 	}
-
-	read_write(cf, ct);
-}
-
-/**
- * read_write - This is a function that will write and read the file content
- * @cf: The source
- * @ct: The destination
- * Return: void
- */
-
-void read_write(int cf, int ct)
-{
-	char buffer[1024];
-	ssize_t to_write, to_read;
-
 	while ((to_read = read(cf, buffer, 1024)) > 0)
 	{
 		to_write = write(ct, buffer, to_read);
-		if (to_write == -1 || to_write != to_read)
+		if (to_write == -1)
 		{
-			dprintf(2, "Error: Can't write to %d\n", ct);
+			dprintf(2, "Error: Can't write to %s\n", file_to);
 			exit(99);
 		}
 	}
 	if (to_read == -1)
 	{
-		dprintf(2, "Error: Can't read from file %d\n", cf);
+		dprintf(2, "Error: Can't read from file %s\n", file_from);
 		exit(98);
 	}
-
 	if (close(cf) == -1)
 	{
 		dprintf(2, "Error: Can't close fd %d\n", cf);
 		exit(100);
 	}
-
 	if (close(ct) == -1)
 	{
 		dprintf(2, "Error: Can't close fd %d\n", ct);
