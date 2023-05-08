@@ -24,7 +24,7 @@ void to_copy_file_from_to(char *file_from, char *file_to)
 		dprintf(2, "Error: Can't write to %s\n", file_to);
 		exit(99);
 	}
-	while ((to_read = read(cf, buffer, 1024)) > 0)
+	while ((to_read = read(cf, buffer, 1024)) >= 0)
 	{
 		to_write = write(ct, buffer, to_read);
 		if (to_write == -1)
