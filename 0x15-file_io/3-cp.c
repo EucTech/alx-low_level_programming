@@ -41,7 +41,7 @@ void read_write(int cf, int ct)
 	while ((to_read = read(cf, buffer, 1024)) > 0)
 	{
 		to_write = write(ct, buffer, to_read);
-		if (to_write == -1)
+		if (to_write == -1 || to_write != to_read)
 		{
 			dprintf(2, "Error: Can't write to %d\n", ct);
 			exit(99);
@@ -56,7 +56,7 @@ void read_write(int cf, int ct)
 	if (close(cf) == -1)
 	{
 		dprintf(2, "Error: Can't close fd %d\n", cf);
-		exit(98);
+		exit(100);
 	}
 
 	if (close(ct) == -1)
