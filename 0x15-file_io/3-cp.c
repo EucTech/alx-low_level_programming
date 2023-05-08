@@ -24,18 +24,6 @@ void to_copy_file_from_to(char *file_from, char *file_to)
 	}
 
 	read_write(cf, ct);
-
-	if (close(cf) == -1)
-	{
-		dprintf(2, "Error: Can't close fd %d\n", cf);
-		exit(98);
-	}
-
-	if (close(ct) == -1)
-	{
-		dprintf(2, "Error: Can't close fd %d\n", ct);
-		exit(100);
-	}
 }
 
 /**
@@ -63,6 +51,18 @@ void read_write(int cf, int ct)
 	{
 		dprintf(2, "Error: Can't read from file %d\n", cf);
 		exit(98);
+	}
+
+	if (close(cf) == -1)
+	{
+		dprintf(2, "Error: Can't close fd %d\n", cf);
+		exit(98);
+	}
+
+	if (close(ct) == -1)
+	{
+		dprintf(2, "Error: Can't close fd %d\n", ct);
+		exit(100);
 	}
 }
 
