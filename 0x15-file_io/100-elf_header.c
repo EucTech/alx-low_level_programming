@@ -19,13 +19,13 @@ void display_type(char *buff)
 	printf(" Type:		");
 	if (check == 0)
 		printf("NONE (No file type)\n");
-	if (check == 1)
+	else if (check == 1)
 		printf("REL (Relocation file)\n");
-	if (check == 2)
+	else if (check == 2)
 		printf("EXEC (Exectable file)\n");
-	if (check == 3)
+	else if (check == 3)
 		printf("DYN (Shared object file)\n");
-	if (check == 4)
+	else if (check == 4)
 		printf("CORE (core file)\n");
 	else
 	{
@@ -44,7 +44,7 @@ void display_version(char *buff)
 {
 	int de_ver = buff[6];
 
-	printf(" de_ver:		%d", de_ver);
+	printf(" Version:		%d", de_ver);
 
 	if (de_ver == EV_CURRENT)
 	{
@@ -113,9 +113,9 @@ void display_osabi(char *buff)
 
 	if (check == 0)
 		printf("UNIX - System V\n");
-	if (check == 2)
+	else if (check == 2)
 		printf("UNIX - NetBSD\n");
-	if (check == 6)
+	else if (check == 6)
 		printf("UNIX - Solaris\n");
 	else
 		printf("<unknown: %x>\n", check);
