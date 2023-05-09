@@ -4,7 +4,7 @@
  * to_copy_file_from_to - This is a function that copies content of a file
  * @file_from: This is a char pointer to the source file
  * @file_to: This is a char pointer to the destinatin of the file
- * Return: The file copied
+ * Return: The file
  */
 void to_copy_file_from_to(char *file_from, char *file_to)
 {
