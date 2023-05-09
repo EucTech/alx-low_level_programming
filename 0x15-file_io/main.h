@@ -19,14 +19,28 @@ void read_write(int cf, int ct);
 
 /**** elf_header ****/
 
-void system_search(char *buff);
+
+/*void system_search(char *buff);*/
+/*int main(int ac, char **av);*/
+/*int elf_search(char *buff);*/
+/*void display_info(char *buff);*/
+/*void display_data( char *buff);*/
+/*void display_version(char *buff);*/
+/*void display_osabi(char *buff);*/
+/*void display_type(char *buff);*/
+/*void display_address(char *buff);*/
+
+
 int main(int ac, char **av);
-int elf_search(char *buff);
-void display_info(char *buff);
-void display_data( char *buff);
-void display_version(char *buff);
-void display_osabi(char *buff);
-void display_type(char *buff);
-void display_address(char *buff);
+void display_magic(unsigned char *e_ident);
+void display_class(unsigned char *e_ident);
+void display_data(unsigned char *e_ident);
+void diplay_osabi(unsigned char *e_ident);
+void display_version(unsigned char *e_ident);
+void display_type(unsigned int e_entry, unsigned char *e_ident);
+void display_entry(unsigned long int e_entry, unsigned char *e_ident);
+void display_abi(unsigned char *e_ident);
+void to_close(int fo);
+void elf_check(unsigned char *e_ident);
 
 #endif
