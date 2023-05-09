@@ -16,7 +16,7 @@ void display_type(char *buff)
 	} else
 		check = buff[17];
 
-	printf(" Type:		");
+	printf("  Type:                              ");
 	if (check == 0)
 		printf("NONE (No file type)\n");
 	else if (check == 1)
@@ -44,7 +44,7 @@ void display_version(char *buff)
 {
 	int de_ver = buff[6];
 
-	printf(" Version:		%d", de_ver);
+	printf("  Version:                           %d", de_ver);
 
 	if (de_ver == EV_CURRENT)
 	{
@@ -66,7 +66,7 @@ void display_address(char *buff)
 	int count, start;
 	char check;
 
-	printf(" Entry point address:		0x");
+	printf("  Entry point address:               0x");
 
 	check = buff[4] + '0';
 	if (check == '1')
@@ -109,7 +109,7 @@ void display_osabi(char *buff)
 {
 	char check = buff[7];
 
-	printf(" OS/ABI:		");
+	printf("  OS/ABI:                            ");
 
 	if (check == 0)
 		printf("UNIX - System V\n");
@@ -120,7 +120,7 @@ void display_osabi(char *buff)
 	else
 		printf("<unknown: %x>\n", check);
 
-	printf(" ABI Version:		%d\n", buff[8]);
+	printf("  ABI Version:                       %d\n", buff[8]);
 }
 
 
@@ -134,7 +134,7 @@ void display_info(char *buff)
 {
 	int size;
 
-	printf(" Magic: ");
+	printf("  Magic:  ");
 
 	for (size = 0; size < 16; size++)
 		printf(" %02x", buff[size]);
@@ -152,7 +152,7 @@ void display_data(char *buff)
 {
 	char info = buff[5];
 
-	printf(" Data:		2's complement");
+	printf("  Data:                              2's complement");
 	if (info == 1)
 	{
 		printf(", little endian\n");
@@ -202,9 +202,9 @@ void system_search(char *buff)
 	display_info(buff);
 
 	if (check == '1')
-		printf(" Class:		ELF32\n");
+		printf("  Class:                             ELF32\n");
 	if (check == '2')
-		printf(" Class:		ELF64\n");
+		printf("  Class:                             ELF64\n");
 
 	display_data(buff);
 	display_version(buff);
@@ -235,7 +235,7 @@ int main(int ac, char **av)
 	file_open = open(av[1], O_RDONLY);
 	if (file_open < 0)
 	{
-		dprintf(2, "Error: file can not be open\n");
+		dprintf(2, "Err: file can not be open\n");
 		exit(98);
 	}
 	lseek(file_open, 0, SEEK_SET);
@@ -243,13 +243,13 @@ int main(int ac, char **av)
 	read_file = read(file_open, buff, 27);
 	if (read_file == -1)
 	{
-		dprintf(2, "Error: file can not be read\n");
+		dprintf(2, "Err: This file can not be read\n");
 		exit(98);
 	}
 
 	if (!elf_search(buff))
 	{
-		dprintf(2, "Err: This is not an ELF\n");
+		dprintf(2, "Err: It is not an ELF\n");
 		exit(98);
 	}
 
