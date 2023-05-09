@@ -3,7 +3,7 @@
 /**
  * display_type - This is a function that displays the elf type
  * @buff: This is a pointer to the buff
- * @Return: Nothing
+ * Return: Nothing
  */
 
 void display_type(char *buff)
@@ -78,7 +78,7 @@ void display_address(char *buff)
 		{
 			if (buff[count] > 0)
 				printf("%x", buff[count]);
-			else
+			else if (buff[count] < 0)
 				printf("%x", 256 + buff[count]);
 		}
 		if (buff[7] == 6)
@@ -91,7 +91,7 @@ void display_address(char *buff)
 		{
 			if (buff[count] >= 0)
 				printf("%02x", buff[count]);
-			else
+			else if (buff[count] < 0)
 				printf("%02x", 256 + buff[count]);
 		}
 	}
@@ -137,7 +137,7 @@ void display_info(char *buff)
 	printf(" Magic: ");
 
 	for (size = 0; size < 16; size++)
-		printf("%02x", buff[size]);
+		printf(" %02x", buff[size]);
 
 	printf("\n");
 }
@@ -152,7 +152,7 @@ void display_data(char *buff)
 {
 	char info = buff[5];
 
-	printf(" Data:		");
+	printf(" Data:		2's complement");
 	if (info == 1)
 	{
 		printf(", little endian\n");
@@ -173,10 +173,10 @@ void display_data(char *buff)
 
 int elf_search(char *buff)
 {
-	char E = buff[1];
-	unsigned char L = buff[2];
-	unsigned char F = buff[3];
 	int de_address = (int)buff[0];
+	char E = buff[1];
+	char L = buff[2];
+	char F = buff[3];
 
 	if (de_address == 127 && E == 'E' && L == 'L' && F == 'F')
 		return (1);
@@ -233,7 +233,7 @@ int main(int ac, char **av)
 		exit(98);
 	}
 	file_open = open(av[1], O_RDONLY);
-	if (file_open == -1)
+	if (file_open < 0)
 	{
 		dprintf(2, "Error: file can not be open\n");
 		exit(98);
