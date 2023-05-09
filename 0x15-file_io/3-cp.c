@@ -15,7 +15,7 @@ void to_copy_file_from_to(char *file_from, char *file_to)
 	cf = open(file_from, O_RDONLY);
 	if (cf == -1)
 	{
-		dprintf(2, "Error: Can't read from file %s\n", file_from);
+		dprintf(1, "Error: Can't read from file %s\n", file_from);
 		exit(98);
 	}
 	ct = open(file_to, O_WRONLY | O_CREAT | O_TRUNC | O_APPEND, 0664);
@@ -35,7 +35,7 @@ void to_copy_file_from_to(char *file_from, char *file_to)
 	}
 	if (to_read == -1)
 	{
-		dprintf(1, "Error: Can't read from file %s\n", file_from);
+		dprintf(2, "Error: Can't read from file %s\n", file_from);
 		exit(98);
 	}
 	if (close(cf) == -1)
